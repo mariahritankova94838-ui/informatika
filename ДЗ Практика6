@@ -22,7 +22,7 @@ int main() {
                 cells[i][j].setFillColor(sf::Color::White);
             }
 
-            и
+          
             int greensToWhite = 0;
             if (j == 2 || j == 3) greensToWhite = 1;  /
             else if (j == 4 || j == 5) greensToWhite = 2;  
