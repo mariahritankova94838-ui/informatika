@@ -14,7 +14,7 @@ int main() {
             cells[i][j].setOutlineColor(sf::Color::Black);
             cells[i][j].setOutlineThickness(1);
 
-            // Базовое чередование: четные столбцы - белые, нечетные - зеленые
+            
             if (i % 2 == 1) {
                 cells[i][j].setFillColor(sf::Color::Green);
             }
