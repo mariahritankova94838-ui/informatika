@@ -4,17 +4,16 @@ int main() {
     const int cellSize = 50;
     const int gridSize = 10;
     sf::RectangleShape cells[gridSize][gridSize];
-    for (int i = 0; i < gridSize; ++i)
-    {
-        for (int j = 0; j < gridSize; ++j)
-        {
+
+    for (int i = 0; i < gridSize; ++i) {
+        for (int j = 0; j < gridSize; ++j) {
             cells[i][j].setSize(sf::Vector2f(cellSize - 2, cellSize - 2));
             cells[i][j].setPosition(i * cellSize, j * cellSize);
             cells[i][j].setFillColor(sf::Color::Black);
             cells[i][j].setOutlineColor(sf::Color::Black);
             cells[i][j].setOutlineThickness(1);
 
-            
+          
             if (i % 2 == 1) {
                 cells[i][j].setFillColor(sf::Color::Green);
             }
@@ -22,23 +21,20 @@ int main() {
                 cells[i][j].setFillColor(sf::Color::White);
             }
 
-          
+            
             int greensToWhite = 0;
-            if (j == 2 || j == 3) greensToWhite = 1;  /
-            else if (j == 4 || j == 5) greensToWhite = 2;  
-            else if (j == 6 || j == 7) greensToWhite = 3; 
-            else if (j == 8 || j == 9) greensToWhite = 4;  
+            if (j >= 2) {
+                greensToWhite = j / 2;
+            }
             if (i % 2 == 1 && i >= gridSize - greensToWhite * 2) {
                 cells[i][j].setFillColor(sf::Color::White);
             }
         }
     }
 
-    while (window.isOpen())
-    {
+    while (window.isOpen()) {
         sf::Event event;
-        while (window.pollEvent(event))
-        {
+        while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed)
                 window.close();
         }
@@ -51,3 +47,4 @@ int main() {
         window.display();
     }
     return 0;
+}
