@@ -1,24 +1,42 @@
 #include <iostream>
 #include <set>
+#include <algorithm>   
+#include <iterator>    
 
 void Elements(const std::set<int>& setA, const std::set<int>& setB) {
-    bool foundCommon = false;
-    std::cout << "Общие положительные элементы: ";
-
- 
+    
+    std::set<int> positiveA;
     for (int elem : setA) {
-       
-        if (elem > 0 && setB.find(elem) != setB.end()) {
-            std::cout << elem << " ";
-            foundCommon = true;
+        if (elem > 0) {
+            positiveA.insert(elem);
         }
     }
 
-    if (!foundCommon) {
+    std::set<int> positiveB;
+    for (int elem : setB) {
+        if (elem > 0) {
+            positiveB.insert(elem);
+        }
+    }
+
+    
+    std::set<int> result;
+    std::set_intersection(positiveA.begin(), positiveA.end(),
+        positiveB.begin(), positiveB.end(),
+        std::inserter(result, result.begin()));
+
+    std::cout << "Общие положительные элементы: ";
+    if (result.empty()) {
         std::cout << "таких элементов нет";
+    }
+    else {
+        for (int elem : result) {
+            std::cout << elem << " ";
+        }
     }
     std::cout << std::endl;
 }
+
 
 int main() {
     int N;
@@ -34,7 +52,6 @@ int main() {
         A.insert(value);
     }
 
-
     std::cout << "Введите " << N << " элементов для множества B:" << std::endl;
     for (int i = 0; i < N; i++) {
         int value;
@@ -43,6 +60,4 @@ int main() {
     }
 
     Elements(A, B);
-
     return 0;
-}
