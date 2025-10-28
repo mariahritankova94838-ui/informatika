@@ -1,0 +1,16 @@
+n_A = int(input("Введите количество элементов множества A: "))
+A = set()
+
+for i in range(n_A):
+    element = int(input("Введите элемент для множества A: "))
+    A.add(element)
+
+n_B = int(input("Введите количество элементов множества B: "))
+B = set()
+
+for i in range(n_B):
+    element = int(input("Введите элементдля множества B: "))
+    B.add(element)
+
+result = {x for x in A&B if x > 0}
+print("Элементы > 0, которые находятся в обоих множествах:", result)
