@@ -1,0 +1,6 @@
+A = []
+for i in range (10) :
+    j=int (input ('Введите элемент: ' ))
+    A.append(j)
+B= [x for x in A if x % 2 != 0]
+print ("Массив В (нечетные элементы): ", B)
